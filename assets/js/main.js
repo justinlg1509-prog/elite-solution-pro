@@ -254,4 +254,89 @@
     window.open(WA + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
   });
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // nav highlights the section on screen
+  const navLinks = [...document.querySelectorAll(".main-nav a")];
+  if("IntersectionObserver" in window){
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if(e.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.hash === "#" + e.target.id));
+      else if(navLinks.some(a => a.hash === "#" + e.target.id && a.classList.contains("on"))) navLinks.forEach(a => a.classList.remove("on"));
+    }), {rootMargin:"-45% 0px -50% 0px"});
+    navLinks.forEach(a => { const s = document.querySelector(a.hash); if(s) spy.observe(s); });
+  }
+
+  // scroll motion: decorative only; without JS or with reduced motion everything is simply visible
+  if(reduce || !("IntersectionObserver" in window)) return;
+  const below = el => el.getBoundingClientRect().top > innerHeight;
+  const once = (el, fn, opts) => { const o = new IntersectionObserver(es => { if(es.some(e => e.isIntersecting)){ o.disconnect(); fn(); } }, opts); o.observe(el); };
+
+  // reveal blocks as they come in, staggered within each group
+  const REVEAL = ".section .head > :not(.direct), .compare tr, .law, .sim, .svc, .step, .paper, .calc, .calc + .note, .tip, .ig-row, .quote, .faq-list details, .direct > *, .form, .footer-grid > *, .disclaimer, .footer-bottom";
+  const blocks = [...document.querySelectorAll("main > section:not(.hero), .site-footer")].filter(below);
+  const items = blocks.flatMap(b => [...b.querySelectorAll(REVEAL)]);
+  items.forEach(el => {
+    const i = [...el.parentElement.children].filter(c => items.includes(c)).indexOf(el);
+    el.style.setProperty("--d", Math.min(i, 5) * 90 + "ms");
+    el.classList.add("rv");
+  });
+  function reveal(el){
+    rio.unobserve(el); el.classList.add("in");
+    const done = ev => {
+      if(ev.target !== el || ev.propertyName !== "transform") return;
+      el.removeEventListener("transitionend", done); el.removeEventListener("transitioncancel", done);
+      el.classList.remove("rv","in"); el.style.removeProperty("--d");
+    };
+    el.addEventListener("transitionend", done); el.addEventListener("transitioncancel", done);
+    setTimeout(() => done({target:el, propertyName:"transform"}), 2200); // transitions pause once a section scrolls off-screen
+  }
+  const rio = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) reveal(e.target); }), {rootMargin:"0px 0px -8% 0px"});
+  items.forEach(el => rio.observe(el));
+
+  // 35% / 90% count up
+  const countUp = (node, to) => { const t0 = performance.now(); const step = now => { const k = Math.min((now-t0)/1300,1); node.nodeValue = Math.round(to*(1-Math.pow(1-k,3))) + "%"; if(k<1) requestAnimationFrame(step); }; requestAnimationFrame(step); };
+  const compare = document.querySelector(".compare");
+  if(below(compare)){
+    const nums = [...compare.querySelectorAll("th")].map(th => th.firstChild).filter(n => n && n.nodeType === 3);
+    const vals = nums.map(n => parseInt(n.nodeValue, 10));
+    nums.forEach(n => n.nodeValue = "0%");
+    once(compare, () => nums.forEach((n,i) => countUp(n, vals[i])), {threshold:.4});
+  }
+
+  // self-check gauge sweeps up when it scrolls in
+  const simBox = document.querySelector(".sim"), simNeedle = document.getElementById("simNeedle");
+  if(below(simBox)){
+    setGauge("sim", 0);
+    once(simBox, () => { simNeedle.style.transitionDuration = "1.3s"; sim(true); setTimeout(() => simNeedle.style.transitionDuration = ".45s", 1400); }, {threshold:.35});
+  }
+
+  // sample diagnostic plays itself the first time it is seen
+  once(document.getElementById("paper"), () => { if(runBtn.dataset.i18n === "rp.run") runBtn.click(); }, {threshold:.55});
+
+  // calculator bars grow in
+  const calcOut = document.querySelector(".calc-out");
+  if(below(calcOut)){
+    calcOut.classList.add("bars-pre");
+    once(calcOut, () => { calcOut.classList.replace("bars-pre","bars-grow"); setTimeout(() => calcOut.classList.remove("bars-grow"), 1400); }, {threshold:.4});
+  }
+
+  // progress line + parallax
+  const prog = document.createElement("div");
+  prog.className = "scroll-progress"; prog.setAttribute("aria-hidden","true");
+  header.appendChild(prog);
+  const hero = document.querySelector(".hero"), heroBg = hero.querySelector(".hero-bg");
+  const lib = document.querySelector(".liberty"), libImg = lib && lib.querySelector(".liberty-img img");
+  function motion(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY/max) : 0})`;
+    if(scrollY >= max - 4) document.querySelectorAll(".rv:not(.in)").forEach(reveal); // the page end never reaches the trigger line
+    if(scrollY < hero.offsetHeight) heroBg.style.transform = `translate3d(0,${(scrollY*.3).toFixed(1)}px,0)`;
+    if(libImg){
+      const r = lib.getBoundingClientRect();
+      if(r.bottom > 0 && r.top < innerHeight){ const p = (innerHeight - r.top)/(innerHeight + r.height); libImg.style.transform = `translate3d(0,${((.5-p)*14).toFixed(2)}%,0) scale(1.18)`; }
+    }
+  }
+  let mTick = false;
+  addEventListener("scroll", () => { if(mTick) return; mTick = true; requestAnimationFrame(() => { motion(); mTick = false; }); }, {passive:true});
+  addEventListener("resize", motion, {passive:true});
+  motion();
 })();

@@ -329,6 +329,38 @@ details[open] summary{color:var(--gold-hi)}
 }
 @keyframes rise{from{opacity:0;transform:translateY(16px)}}
 
+/* scroll motion (.rv / .in / .bars-* are added by JS only when motion is allowed) */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms),transform 1s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+.bars-pre .bar i{width:0!important}
+.bars-grow .bar i{transition-duration:1.2s}
+.scroll-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-hi));transform:scaleX(0);transform-origin:0 50%;pointer-events:none;will-change:transform}
+.main-nav a{position:relative}
+.main-nav a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1.5px;border-radius:2px;background:var(--gold);transform:scaleX(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.main-nav a.on{color:var(--text)}
+.main-nav a.on::after{transform:scaleX(1)}
+.btn{transition:background-color .2s,color .2s,box-shadow .25s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold:hover{box-shadow:0 14px 30px -14px rgba(201,162,74,.75)}
+.btn:active{transform:translateY(0)}
+.svc-media img{transform:scale(1.07);transition:opacity .7s ease,transform 1.8s cubic-bezier(.2,.8,.2,1)}
+.svc-media img.on{transform:none}
+.svc li{transition:box-shadow .25s,color .25s}
+.svc.active li{box-shadow:inset 0 0 0 1px rgba(201,162,74,.45)}
+.liberty-img img{will-change:transform}
+@media (prefers-reduced-motion:no-preference){
+  .hero-bg{will-change:transform}
+  .hero-bg img{animation:heroZoom 2.6s cubic-bezier(.2,.8,.2,1) both}
+  .wa-float.show::after{content:"";position:absolute;inset:0;border-radius:50%;animation:waPulse 2.8s ease-out 1s infinite;pointer-events:none}
+}
+@keyframes heroZoom{from{transform:scale(1.09)}}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%,100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+@supports (interpolate-size:allow-keywords) and selector(::details-content){
+  .faq-list{interpolate-size:allow-keywords}
+  .faq-list details::details-content{height:0;overflow:clip;transition:height .45s cubic-bezier(.2,.8,.2,1),content-visibility .45s allow-discrete}
+  .faq-list details[open]::details-content{height:auto}
+}
+
 /* moved from inline style attributes */
 .sprite{position:absolute}
 .gauge-foot > span:last-child{text-align:right}
