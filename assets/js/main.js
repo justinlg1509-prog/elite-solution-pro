@@ -11,6 +11,11 @@
     "hero.p2":{es:"Español e inglés",en:"English and Spanish"},
     "g.title":{es:"Qué tan listo está tu negocio para crecer",en:"How ready your business is to grow"},
     "g.from":{es:"Hoy",en:"Today"},"g.to":{es:"Tu meta",en:"Your goal"},
+    "g.note":{es:"Ejemplo ilustrativo. Cada negocio es distinto y los resultados varían.",en:"Illustrative example. Every business is different and results vary."},
+    "q.note":{es:"Experiencias individuales de clientes. No son una garantía: los resultados varían según cada negocio.",en:"Individual client experiences. They are not a guarantee: results vary by business."},
+    "form.consent":{es:"Al pulsar enviar se abre WhatsApp con tu mensaje y tú decides si lo envías. Al enviarlo, aceptas que te respondamos sobre tu solicitud por WhatsApp, teléfono o email. No enviamos mensajes promocionales sin tu permiso.",en:"When you press send, WhatsApp opens with your message and you decide whether to send it. By sending it, you agree that we may reply about your request by WhatsApp, phone or email. We don't send promotional messages without your permission."},
+    "form.privacy":{es:"Política de privacidad",en:"Privacy policy"},
+    "ft.a11y":{es:"Accesibilidad",en:"Accessibility"},
     "sc.h":{es:"¿Tu negocio está listo para crecer?",en:"Is your business ready to grow?"},
     "sc.p":{es:"Lo que separa a un negocio que sobrevive de uno que crece es la estructura. Así se ve la diferencia.",en:"What separates a business that survives from one that grows is structure. Here's what changes."},
     "vs.bad":{es:"Funcionando a base de improvisar",en:"Running on improvisation"},
@@ -98,7 +103,7 @@
     "ft.sub":{es:"Consultoría y soluciones empresariales",en:"Business consulting and solutions"},
     "ft.tag":{es:"Tu negocio, construido de la forma correcta.",en:"Your business, built the right way."},
     "ft.nav":{es:"Explora",en:"Explore"},"ft.contact":{es:"Contacto",en:"Contact"},
-    "ft.disc":{es:"Elite Solution Pro LLC ofrece servicios de consultoría empresarial. No somos un prestamista, un banco ni una empresa de reparación de crédito, y no garantizamos la aprobación de financiamiento. Los resultados varían según cada negocio.",en:"Elite Solution Pro LLC provides business consulting services. We are not a lender, a bank or a credit repair company, and we do not guarantee financing approvals. Results vary by business."},
+    "ft.disc":{es:"Elite Solution Pro LLC ofrece servicios de consultoría empresarial. No somos un prestamista, un banco, un bróker de préstamos ni una empresa de reparación de crédito, y no garantizamos la aprobación de financiamiento. No somos un despacho de abogados ni de contadores y no damos asesoría legal, fiscal ni contable. Los resultados varían según cada negocio.",en:"Elite Solution Pro LLC provides business consulting services. We are not a lender, a bank, a loan broker or a credit repair company, and we do not guarantee financing approvals. We are not a law firm or an accounting firm and do not provide legal, tax or accounting advice. Results vary by business."},
     "ft.priv":{es:"Política de privacidad",en:"Privacy policy"},"ft.terms":{es:"Términos y condiciones",en:"Terms and conditions"},
     "bar.call":{es:"Llamar",en:"Call"},
     "wa.hello":{es:"Hola, quiero una consulta gratis para mi negocio.",en:"Hi, I'd like a free business consultation."}
@@ -203,6 +208,7 @@
   function applyLang(l){
     lang = l; document.documentElement.lang = l;
     document.querySelectorAll("[data-i18n]").forEach(el => { const v = T[el.dataset.i18n]; if(v) el.textContent = v[l]; });
+    document.querySelectorAll("[data-href-es]").forEach(a => a.href = l === "es" ? a.dataset.hrefEs : a.dataset.hrefEn);
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
     document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => a.href = WA + "?text=" + encodeURIComponent(T["wa.hello"][l]));
     document.title = TITLE[l];

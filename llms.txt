@@ -2,7 +2,7 @@
 
 > Business consulting for entrepreneurs and small businesses in the United States: company formation and structure, financial organization, funding readiness and AI automation. Free first consultation, in English or Spanish.
 
-Elite Solution Pro LLC is a business consulting firm based at 136 Kingsland Road #1065, Clifton, NJ 07014. It serves clients across the United States by WhatsApp, video call and email. It is not a lender, a bank or a credit repair company, and it does not guarantee financing approvals.
+Elite Solution Pro LLC is a business consulting firm based at 136 Kingsland Road #1065, Clifton, NJ 07014. It serves clients across the United States by WhatsApp, video call and email. It is not a lender, a bank, a loan broker or a credit repair company, and it does not guarantee financing approvals. It is not a law firm or an accounting firm and does not provide legal, tax or accounting advice.
 
 ## Services
 
@@ -28,3 +28,9 @@ Elite Solution Pro LLC is a business consulting firm based at 136 Kingsland Road
 
 - [Home (English)](https://www.elitesolutionpro.com/)
 - [Inicio (Español)](https://www.elitesolutionpro.com/es)
+
+## Legal
+
+- [Privacy Policy](https://www.elitesolutionpro.com/privacy) · [Política de privacidad](https://www.elitesolutionpro.com/es/privacidad)
+- [Terms and Conditions](https://www.elitesolutionpro.com/terms) · [Términos y condiciones](https://www.elitesolutionpro.com/es/terminos)
+- [Accessibility Statement](https://www.elitesolutionpro.com/accessibility) · [Declaración de accesibilidad](https://www.elitesolutionpro.com/es/accesibilidad)

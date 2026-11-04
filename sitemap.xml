@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.elitesolutionpro.com/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/"/>
   </url>
   <url>
     <loc>https://www.elitesolutionpro.com/es</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/privacy</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/es/privacidad</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/terms</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/terminos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/terms"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/es/terminos</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/terminos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/terms"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/accessibility</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/accesibilidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/accessibility"/>
+  </url>
+  <url>
+    <loc>https://www.elitesolutionpro.com/es/accesibilidad</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitesolutionpro.com/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.elitesolutionpro.com/es/accesibilidad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitesolutionpro.com/accessibility"/>
   </url>
 </urlset>
